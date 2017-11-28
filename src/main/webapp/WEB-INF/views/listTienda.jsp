@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,16 +30,19 @@
                     <td><c:out value="${tienda.nombre}" /></td>
                     <td><c:out value="${tienda.telefono}" /></td>
                     <td><c:out value="${tienda.latitud}" /></td>
-                    <td><c:out value="${tienda.altitud}" /></td>
-                    <td><c:out value="${tienda.direccion}" /></td>
+                    <td><c:out value="${tienda.longitud}" /></td>
+                    <td><c:out value="${tienda.puesto}" /></td>
                     <td><c:out value="${tienda.idComerciante}" /></td>
-                    <td><a href="TiendaServlet?action=edit&id=<c:out value="${tienda.id}"/>">Update</a></td>
-                    <td><a href="TiendaServlet?action=delete&id=<c:out value="${tienda.id}"/>">Delete</a></td>
+                    <!-- td><a href="TiendaServlet?action=edit&id=<c:out value="${tienda.id}"/>">Update</a></td>
+                    <td><a href="TiendaServlet?action=delete&id=<c:out value="${tienda.id}"/>">Delete</a></td> -->
                 </tr>
             </c:forEach>
         </tbody>
     </table>
-    <p><a href="TiendaServlet?action=insert">Add Tienda</a></p>
-    <p><a href="welcome.jsp">Volver al inicio</a></p>
+    <br>
+    <a href="<%=request.getContextPath()%>/login"
+					class="btn btn-success"><i class="glyphicon glyphicon-edit"></i>
+					Login</a>
+	<br>
 </body>
 </html>

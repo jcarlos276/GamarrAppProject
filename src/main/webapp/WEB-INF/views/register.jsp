@@ -21,7 +21,7 @@
 			<input type="password" name="pass" class="form-control">
 			<input type="submit" value="Registrarse" class="btn btn-success btn-block">
 		</form>
-		<a href="index.jsp">Ya tienes una cuenta? Ingresa</a>
+		<a href="<%=request.getContextPath()%>/login">Ya tienes una cuenta? Ingresa</a>
 	</div>
 	<footer class="footer">
 		<div class="container">

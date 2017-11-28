@@ -1,8 +1,8 @@
 package com.guillen.gamarrapp.model;
 
 public class Usuario {	
-	private int usuarioId;
-	private String fullname;
+	private int id;
+	private String nombre;
 	private String dni;
     private String email;
     private String password;
@@ -11,29 +11,29 @@ public class Usuario {
     
 	public Usuario(int usuarioId, String fullname, String dni, String email, String password) {
 		super();
-		this.usuarioId = usuarioId;
-		this.fullname = fullname;
+		this.id = usuarioId;
+		this.nombre = fullname;
 		this.dni = dni;
 		this.email = email;
 		this.password = password;
 	}
 	
 	public int getUsuarioId() {
-		return usuarioId;
+		return id;
 	}
 
 
 	public void setUsuarioId(int usuarioId) {
-		this.usuarioId = usuarioId;
+		this.id = usuarioId;
 	}
     
     public String getFullname() {
-		return fullname;
+		return nombre;
 	}
 
 
 	public void setFullname(String fullname) {
-		this.fullname = fullname;
+		this.nombre = fullname;
 	}
 
 
@@ -69,7 +69,7 @@ public class Usuario {
     
     @Override
     public String toString() {
-        return "User [usuarioId="+ usuarioId + ", fullname=" + fullname + ", dni=" + dni
+        return "User [usuarioId="+ id + ", fullname=" + nombre + ", dni=" + dni
                 + ", email=" + email + ", password="
                 + password + "]";
     }

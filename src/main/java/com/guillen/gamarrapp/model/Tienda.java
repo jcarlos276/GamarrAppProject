@@ -5,8 +5,9 @@ public class Tienda {
 	public String nombre;
 	public int telefono;
 	public String latitud;
-	public String altitud;
-	public String direccion;
+	public String longitud;
+	public String ubicacion;
+	public String puesto;
 	public int idComerciante;
 	
 	public Tienda() {
@@ -37,17 +38,23 @@ public class Tienda {
 	public void setLatitud(String latitud) {
 		this.latitud = latitud;
 	}
-	public String getAltitud() {
-		return altitud;
+	public String getLongitud() {
+		return longitud;
 	}
-	public void setAltitud(String altitud) {
-		this.altitud = altitud;
+	public void setLongitud(String longitud) {
+		this.longitud = longitud;
 	}
-	public String getDireccion() {
-		return direccion;
+	public String getUbicacion() {
+		return ubicacion;
 	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+	public String getPuesto() {
+		return puesto;
+	}
+	public void setPuesto(String puesto) {
+		this.puesto = puesto;
 	}
 	public int getIdComerciante() {
 		return idComerciante;

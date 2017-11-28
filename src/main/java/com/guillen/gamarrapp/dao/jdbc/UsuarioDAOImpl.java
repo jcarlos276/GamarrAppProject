@@ -13,6 +13,7 @@ import com.guillen.gamarrapp.dao.UsuarioDAO;
 import com.guillen.gamarrapp.exception.DAOException;
 import com.guillen.gamarrapp.exception.EmptyResultException;
 import com.guillen.gamarrapp.exception.LoginException;
+import com.guillen.gamarrapp.mapper.UsuarioMapper;
 import com.guillen.gamarrapp.model.Usuario;
 
 @Repository
@@ -24,54 +25,138 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public Usuario findUsuario(int id) throws DAOException, EmptyResultException {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario findUsuario(int usuarioId) throws DAOException, EmptyResultException {
+		String query = "SELECT id, nombre, dni, email, password FROM comerciante WHERE id = ?";
+
+		Object[] params = new Object[] { usuarioId };
+
+		try {
+
+			Usuario usr = (Usuario) jdbcTemplate.queryForObject(query, params, new UsuarioMapper());
+			//
+			return usr;
+
+		} catch (EmptyResultDataAccessException e) {
+			throw new EmptyResultException();
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
 	}
 
 	@Override
 	public void create(String fullname, String dni, String email, String password) throws DAOException {
-		// TODO Auto-generated method stub
+		
+		String query = "INSERT INTO comerciante (nombre, dni, email, password)  VALUES ( ?,?,?,? )";
+
+		Object[] params = new Object[] { fullname, dni, email, password };
+		
+		try {
+			// create
+			jdbcTemplate.update(query, params);
+
+		} catch (Exception e) {
+			logger.error("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
 		
 	}
 
 	@Override
 	public void delete(String email) throws DAOException {
-		// TODO Auto-generated method stub
+
+		String query = "DELETE FROM  comerciante WHERE email = ? ";
+
+		Object[] params = new Object[] { email };
+
+		try {
+			jdbcTemplate.update(query, params);
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
 		
 	}
 
 	@Override
 	public void update(String fullname, String dni, String email, String password) throws DAOException {
-		// TODO Auto-generated method stub
+
+		String query = "UPDATE comerciante SET nombre = ?, dni =?, email = ?, password = ? WHERE email = ?";
+
+		Object[] params = new Object[] { fullname, dni, email, password };
+
+		try {
+			jdbcTemplate.update(query, params);
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
 		
 	}
 
 	@Override
-	public Usuario findEmployeeByDni(String dni) throws DAOException, EmptyResultException {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario findUsuarioByDni(String dni) throws DAOException, EmptyResultException {
+		
+				String query = "SELECT id, nombre, dni, email, password FROM comerciante WHERE dni = ?";
+
+				Object[] params = new Object[] { dni };
+
+				try {
+
+					Usuario usr = (Usuario) jdbcTemplate.queryForObject(query, params, new UsuarioMapper());
+					//
+					return usr;
+
+				} catch (EmptyResultDataAccessException e) {
+					throw new EmptyResultException();
+				} catch (Exception e) {
+					logger.info("Error: " + e.getMessage());
+					throw new DAOException(e.getMessage());
+				}
 	}
 
 	@Override
-	public Usuario findEmployeeByFullname(String fullname) throws DAOException, EmptyResultException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Usuario findUsuarioByFullname(String fullname) throws DAOException, EmptyResultException {
+		
+				String query = "SELECT id, nombre, dni, email, password FROM comerciante WHERE nombre = ?";
 
-	@Override
-	public List<Usuario> findAllEmployees() throws DAOException, EmptyResultException {
-		// TODO Auto-generated method stub
-		return null;
+				Object[] params = new Object[] { fullname };
+
+				try {
+
+					Usuario usr = (Usuario) jdbcTemplate.queryForObject(query, params, new UsuarioMapper());
+					//
+					return usr;
+
+				} catch (EmptyResultDataAccessException e) {
+					throw new EmptyResultException();
+				} catch (Exception e) {
+					logger.info("Error: " + e.getMessage());
+					throw new DAOException(e.getMessage());
+				}
+				
 	}
 
 	@Override
 	public Usuario validate(String email, String password) throws LoginException, DAOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		
+		String query = "SELECT id, nombre, dni, email, password FROM comerciante WHERE email = ? AND password = ?";
 
-	
+		Object[] params = new Object[] { email, password };
+
+		try {
+
+			Usuario usr = (Usuario) jdbcTemplate.queryForObject(query, params, new UsuarioMapper());
+			//
+			return usr;
+			//return null;
+
+		} catch (Exception e) {
+			logger.info("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
+		
+	}
 
 }
 

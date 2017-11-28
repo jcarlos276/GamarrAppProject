@@ -11,18 +11,20 @@ public interface TiendaDAO {
 	
 	Tienda findTienda(int id) throws DAOException, EmptyResultException;
 
-	void create(String nombre, int telefono, String latitud, String altitud, String direccion, int idComerciante) throws DAOException;
+	void create(String nombre, int telefono, String latitud, String longitud, String ubicacion, String puesto, int idComerciante) throws DAOException;
 
 	void delete(int id) throws DAOException;
 
-	void update(String nombre, int telefono, String latitud, String altitud, String direccion, int idComerciante) throws DAOException;
+	void update(int id, String nombre, int telefono, String latitud, String longitud, String ubicacion, String puesto, int idComerciante) throws DAOException;
 
 	List<Tienda> findAllTiendas() throws DAOException, EmptyResultException;
 
 	List<Tienda> findTiendasByName(String nombre) throws DAOException, EmptyResultException;
+	
+	Tienda findTiendaByName(String name) throws DAOException, EmptyResultException;
 
 	List<Tienda> findTiendasByCategoria(String categoria) throws DAOException, EmptyResultException;
 	
-	//aun editando
+	void addCategoria(String tienda, String categoria) throws DAOException;
 
 }

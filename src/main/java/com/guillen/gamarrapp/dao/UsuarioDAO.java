@@ -19,11 +19,9 @@ public interface UsuarioDAO {
 
 	void update(String fullname, String dni, String email, String password) throws DAOException;
 
-	Usuario findEmployeeByDni(String dni) throws DAOException, EmptyResultException;
+	Usuario findUsuarioByDni(String dni) throws DAOException, EmptyResultException;
 	
-	Usuario findEmployeeByFullname(String fullname) throws DAOException, EmptyResultException;
-
-	List<Usuario> findAllEmployees() throws DAOException, EmptyResultException;
+	Usuario findUsuarioByFullname(String fullname) throws DAOException, EmptyResultException;
 
 	Usuario validate(String email, String password) throws LoginException, DAOException;
 
